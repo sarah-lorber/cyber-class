@@ -77,3 +77,8 @@ function enableAUser($name){
    Enable-LocalUser $userToBeEnabled
    
 }
+
+function getAtRiskUsers($days){
+$allTheFails = getFailedLogins $days
+$allTheFails | Group-Object User | Select-Object -Property Count, Name
+}
