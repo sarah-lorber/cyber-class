@@ -64,3 +64,8 @@ function getFailedLogins($timeBack){
 
     return $failedloginsTable
 } # End of function getFailedLogins
+
+function getAtRiskUsers($days){
+$allTheFails = getFailedLogins $days
+$allTheFails | Group-Object User | Select-Object -Property Count, Name
+}
